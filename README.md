@@ -16,12 +16,14 @@ Usando npm:
 
 ```
 npm install
+npm start
 ```
 
 Usando yarn:
 
 ```
 yarn install
+yarn start
 ```
 
 ## Autor
