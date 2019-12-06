@@ -1,6 +1,6 @@
 # truckpad [case]
 
-Este case trata-se de um sistema para simular o gerenciamento de usuários da plataforma truckpad. O usuário é capaz de cadastrar caminhoneiros, visualizar uma listagem dos caminhoneitros cadastrados e, caso queira, editar as informações cadastradas.
+Este case trata-se de um sistema para simular o gerenciamento de usuários da plataforma truckpad. O usuário é capaz de cadastrar caminhoneiros, visualizar uma listagem dos caminhoneiros cadastrados e, caso queira, editar as informações cadastradas.
 
 ## Começando
 
