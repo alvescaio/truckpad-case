@@ -6,6 +6,7 @@
       "birth_date": "1976-09-22T00:00:00",
       "state": "São Paulo",
       "city": "São Paulo",
+      "phone": "1120754610",
       "addresses": {
         "name": "Casa",
         "state": "São Paulo",
@@ -39,6 +40,7 @@
       "birth_date": "1986-09-22T00:00:00",
       "state": "Rio de Janeiro",
       "city": "Niterói",
+      "phone": "1120754610",
       "addresses": {
         "name": "",
         "state": "",

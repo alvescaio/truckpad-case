@@ -10,9 +10,6 @@ const INITIAL_STATE = {
 
 function reducer(state = INITIAL_STATE, action) {
     if(action.type === 'ADD_USER'){
-        console.log(action.user)
-        console.log(state.users)
-        
         return {
             ...state,
             users: [
@@ -22,13 +19,20 @@ function reducer(state = INITIAL_STATE, action) {
         }
     }
 
-    if(action.type === 'CHANGE_ACTIVE'){
+    if(action.type === 'DELETE_USER'){
+        return {
+            ...state,
+            users: state.users.filter( user => user.id != action.id )
+        }
+    }
 
+    if(action.type === 'CHANGE_ACTIVE'){
         return {
             ...state,
             users: state.users.map( user => user.id === action.user.id ? { ...user, active: !user.active } : user)
         }
     }
+
     return state;
 }
 

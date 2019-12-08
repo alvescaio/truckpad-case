@@ -1,28 +1,23 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Icon from '@material-ui/core/Icon';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 import {IconButton} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions} from '@material-ui/core';
 
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { NONAME } from 'dns';
+import { tsConstructorType } from '@babel/types';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,11 +28,6 @@ const useStyles = makeStyles(theme => ({
     },
     alignSpacebetween: {
         justifyContent: 'flex-end',
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
     },
     hide: {
         display: 'none',
@@ -53,9 +43,10 @@ const useStyles = makeStyles(theme => ({
         marginRight: 5
     },
     bigAvatar: {
-        position: 'relative',
-        bottom: -40,
-        left: 20, 
+        position: 'static',
+        width: 'auto',
+        marginBottom: -40,
+        marginLeft: 20, 
         width: 80,
         height: 80
     },
@@ -71,12 +62,20 @@ function addUser(user) {
     };
 }
 
+function deleteUser(id) {
+    return {
+        type: 'DELETE_USER',
+        id
+    };
+}
+
 function changeActive(user) {
     return {
         type: 'CHANGE_ACTIVE',
         user,
     };
 }
+
 
 function formatDate(date){
     let originDate = new Date(date);
@@ -85,6 +84,16 @@ function formatDate(date){
 
 function Home({ users, dispatch }){
     const classes = useStyles();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return (
         <div>
@@ -95,11 +104,17 @@ function Home({ users, dispatch }){
                 {
                     users.map((user, i) => (
                         <Grid item xs={12} md={4} sm={6}>
-                             <Card className={classes.card, !user.active?classes.disabled:''}>
+                             <Card className={classes.card, !user.active ? classes.disabled : ''}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {user.name}
                                     </Typography>
+                                    <div className={classes.iconAndtext}>
+                                        <Icon className={classes.iconDescription}>phone</Icon>
+                                        <Typography variant="body1" color="textSecondary" component="p">
+                                            { user.phone }
+                                        </Typography>
+                                    </div>
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>room</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
@@ -112,12 +127,27 @@ function Home({ users, dispatch }){
                                             { formatDate(user.birth_date) }
                                         </Typography>
                                     </div>
+                                    <div className={classes.iconAndtext}>
+                                        <Icon className={classes.iconDescription}>info</Icon>
+                                        <Typography variant="body1" color="textSecondary" component="p" style={{marginRight: 5}}>
+                                            CPF:
+                                        </Typography>
+                                        <Typography variant="body1" color="textSecondary" component="p">
+                                            {user.documents.map(document => document.doc_type === "CPF" ? document.number : "Não cadastrado")[0] }
+                                        </Typography>
+                                    </div>
                                 </CardContent>
                                 <Avatar alt="Remy Sharp" src={require('../../assets/profile_pictures/user-1.jpg')} className={classes.bigAvatar} />
                                 <Divider />
                                 <CardActions disableSpacing className={classes.alignSpacebetween} >
                                     <IconButton aria-label="show more" color="primary" onClick={() => dispatch(addUser({...user, id: users.length+1}))}>
                                         <Icon>edit</Icon>
+                                    </IconButton>
+                                    <IconButton aria-label="show more" disabled color="secondary" onClick={() => dispatch(deleteUser(user.id))}>
+                                        <Icon>delete</Icon>
+                                    </IconButton>
+                                    <IconButton aria-label="show more" color="secondary" onClick={handleClickOpen}>
+                                        <Icon>delete</Icon>
                                     </IconButton>
                                     <IconButton onClick={() => dispatch(changeActive(user))} aria-label="show more">
                                         <Icon>{!user.active ? "visibility" : "visibility_off"}</Icon>
@@ -135,6 +165,28 @@ function Home({ users, dispatch }){
                     </NavLink>
                 </Grid>
             </Grid>
+
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{"Tem certeza que deseja excluir este usuário?"}</DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    bla bla bla
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                    Não
+                </Button>
+                <Button onClick={handleClose} color="secondary" autoFocus>
+                    Sim, eu tenho
+                </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }
