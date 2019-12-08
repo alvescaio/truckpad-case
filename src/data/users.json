@@ -1,6 +1,7 @@
 [
     {
-      "id": "0",
+      "id": 0,
+      "active": true,
       "name": "Pouca Tripa",
       "birth_date": "1976-09-22T00:00:00",
       "state": "São Paulo",
@@ -33,6 +34,7 @@
     },
     {
       "id": "1",
+      "active": true,
       "name": "Quase nada",
       "birth_date": "1986-09-22T00:00:00",
       "state": "Rio de Janeiro",
@@ -49,7 +51,6 @@
         "street_name": ""
       },
       "documents": [
-        
         {
           "country": "BR",
           "number": "12312312377",

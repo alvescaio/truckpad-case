@@ -1,18 +1,29 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import store from './store';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+
 import Home from './components/Home';
+import NewUser from './components/NewUser';
+
 
 class App extends React.Component {
-  render(){
-      return (
-        <div className="App">
-          <Provider store={store}>
-            <Home />
-          </Provider>
-        </div>
-      );
+
+  render (){
+    return (
+      <>
+        <CssBaseline />
+        <Container>
+          <BrowserRouter>
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/NewUser" component={NewUser} />
+            <Route path="*" />
+          </BrowserRouter>
+        </Container>
+      </>
+    );
   }
 }
 
