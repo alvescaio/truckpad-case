@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
@@ -77,7 +77,7 @@ function changeActive(user) {
 }
 
 
-function formatDate(date){
+function formatBrDate(date){
     let originDate = new Date(date);
     return originDate.getDay('00')+"/"+originDate.getMonth('00')+"/"+originDate.getFullYear('0000');
 }
@@ -85,14 +85,17 @@ function formatDate(date){
 function Home({ users, dispatch }){
     const classes = useStyles();
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [tempUser, setTempUser] = useState({documents: []});
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (data = {}) => {
+        setTempUser(data);
         setOpen(true);
     };
   
-    const handleClose = () => {
-      setOpen(false);
+    const handleClose = (idUser) => {
+        dispatch(deleteUser(idUser));
+        setOpen(false);
     };
 
     return (
@@ -124,7 +127,7 @@ function Home({ users, dispatch }){
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>cake</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            { formatDate(user.birth_date) }
+                                            { formatBrDate(user.birth_date) }
                                         </Typography>
                                     </div>
                                     <div className={classes.iconAndtext}>
@@ -143,10 +146,7 @@ function Home({ users, dispatch }){
                                     <IconButton aria-label="show more" color="primary" onClick={() => dispatch(addUser({...user, id: users.length+1}))}>
                                         <Icon>edit</Icon>
                                     </IconButton>
-                                    <IconButton aria-label="show more" disabled color="secondary" onClick={() => dispatch(deleteUser(user.id))}>
-                                        <Icon>delete</Icon>
-                                    </IconButton>
-                                    <IconButton aria-label="show more" color="secondary" onClick={handleClickOpen}>
+                                    <IconButton aria-label="show more" color="secondary" onClick={() => handleClickOpen(user)}>
                                         <Icon>delete</Icon>
                                     </IconButton>
                                     <IconButton onClick={() => dispatch(changeActive(user))} aria-label="show more">
@@ -172,17 +172,18 @@ function Home({ users, dispatch }){
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Tem certeza que deseja excluir este usuário?"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir o cadastro deste usuário?</DialogTitle>
                 <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    bla bla bla
-                </DialogContentText>
+                    <DialogContentText id="alert-dialog-description">
+                        <b>Nome: </b>{tempUser.name} <br />
+                        <b>CPF: </b>{tempUser.documents.map(document => document.doc_type === "CPF" ? document.number : "Não cadastrado")[0]} <br />
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                 <Button onClick={handleClose} color="primary">
                     Não
                 </Button>
-                <Button onClick={handleClose} color="secondary" autoFocus>
+                <Button onClick={() => handleClose(tempUser.id)} color="secondary" autoFocus>
                     Sim, eu tenho
                 </Button>
                 </DialogActions>
