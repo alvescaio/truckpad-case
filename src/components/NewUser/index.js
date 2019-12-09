@@ -6,15 +6,15 @@ import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import { Grid, FormControl, IconButton, Typography } from '@material-ui/core';
+import { Grid, FormControl, IconButton, Typography, Button } from '@material-ui/core';
 
 import { Link, NavLink } from 'react-router-dom';
+import { func } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
     root: {
       '& > *': {
         margin: theme.spacing(1),
-        width: 200,
       },
     },
     margin: {
@@ -23,14 +23,16 @@ const useStyles = makeStyles(theme => ({
             marginTop: 20,
           },
     },
-    marginTop: {
-        marginTop: theme.spacing(5),
-    }
 }));
 
 function NewUser({ users, dispatch }){
     const classes = useStyles();
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        alert("Enviado!");
+    }
+    
     return (
         <>
         <Grid container spacing={2}>
@@ -38,19 +40,18 @@ function NewUser({ users, dispatch }){
                 <Typography gutterBottom variant="h4" component="h4">
                     Cadastrar novo usuário
                 </Typography>
-            </Grid>
-            <FormControl fullWidth className={classes.margin} variant="outlined">
-                <TextField id="outlined-basic" label="Nome" variant="outlined" />
-                <TextField id="outlined-basic" label="Nome" variant="outlined" />
-                <TextField id="outlined-basic" label="Nome" variant="outlined" />
-            </FormControl>
-            <Grid item xs={3}>
+                <form onSubmit={handleSubmit}>
+                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
+                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
+                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
+                    <Button type="submit">Enviar</Button>
+                </form>
                 <NavLink to="/">
                     <IconButton>
-                        <Icon>home</Icon>
+                        <Icon>back</Icon>
                     </IconButton>
                 </NavLink>
-            </Grid>  
+            </Grid> 
         </Grid>
        </>
     );
