@@ -8,22 +8,22 @@ Segue algumas orientações de como executar o projeto.
 
 ### Pré-requisitos
 
-Você precisa ter o [nodejs](https://nodejs.org/) instalado, além disso é necessário possuir o npm ou yarn, para prosseguir com a instalação e criação de um servidor local para executar o sistema.
+Você precisa ter o [nodejs](https://nodejs.org/) instalado, além disso, é necessário possuir o npm ou yarn para prosseguir com a build do projeto.
 
 ### Executando o projeto
 
 Usando npm:
 
 ```
-npm install
-npm start
+# npm install
+# npm start
 ```
 
 Usando yarn:
 
 ```
-yarn install
-yarn start
+# yarn install
+# yarn start
 ```
 
 ## Autor
