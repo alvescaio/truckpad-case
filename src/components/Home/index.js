@@ -172,13 +172,7 @@ function Home({ users, dispatch }){
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir o cadastro deste usuário?</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        <b>Nome: </b>{tempUser.name} <br />
-                        <b>CPF: </b>{tempUser.documents.map(document => document.doc_type === "CPF" ? document.number : "Não cadastrado")[0]} <br />
-                    </DialogContentText>
-                </DialogContent>
+                <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir?</DialogTitle>
                 <DialogActions>
                 <Button onClick={handleClose} color="primary">
                     Não

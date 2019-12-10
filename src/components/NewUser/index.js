@@ -1,12 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Icon from '@material-ui/core/Icon';
-import Avatar from '@material-ui/core/Avatar';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import { Grid, FormControl, IconButton, Typography, Button } from '@material-ui/core';
+import { makeStyles, TextField, Icon, 
+        Grid, FormControl, IconButton, Typography, Button} from '@material-ui/core';
 
 import { Link, NavLink } from 'react-router-dom';
 import { func } from 'prop-types';
@@ -18,9 +12,8 @@ const useStyles = makeStyles(theme => ({
       },
     },
     margin: {
-        margin: theme.spacing(1),
         '& > *': {
-            marginTop: 20,
+            marginTop: theme.spacing(2),
           },
     },
 }));
@@ -36,21 +29,32 @@ function NewUser({ users, dispatch }){
     return (
         <>
         <Grid container spacing={2}>
-            <Grid item xs={12} class={classes.marginTop}>
+            <Grid item xs={12}>
                 <Typography gutterBottom variant="h4" component="h4">
                     Cadastrar novo usuário
                 </Typography>
-                <form onSubmit={handleSubmit}>
-                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
-                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
-                    <TextField id="outlined-basic" label="Nome" variant="outlined" />
-                    <Button type="submit">Enviar</Button>
+                <form onSubmit={handleSubmit} className={classes.margin}>
+                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
+                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
+                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
+                    <TextField
+                        id="filled-full-width"
+                        label="Label"
+                        placeholder="Placeholder"
+                        fullWidth
+                        margin="normal"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        variant="filled"
+                        />
                 </form>
                 <NavLink to="/">
                     <IconButton>
-                        <Icon>back</Icon>
+                        <Icon>arrow_back</Icon>
                     </IconButton>
                 </NavLink>
+                <Button variant="contained" color="primary" type="submit">Enviar</Button>
             </Grid> 
         </Grid>
        </>
