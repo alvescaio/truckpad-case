@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 
 import Home from './components/Home';
 import NewUser from './components/NewUser';
+import Register from './components/Register';
 
 
 class App extends React.Component {
@@ -18,7 +19,7 @@ class App extends React.Component {
         <Container>
           <BrowserRouter>
             <Route path="/" exact={true} component={Home} />
-            <Route path="/NewUser" component={NewUser} />
+            <Route path="/register" component={Register} />
             <Route path="*" />
           </BrowserRouter>
         </Container>

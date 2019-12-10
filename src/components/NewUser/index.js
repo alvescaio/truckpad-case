@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles, TextField, Icon, 
         Grid, FormControl, IconButton, Typography, Button} from '@material-ui/core';
 
+import { useFormik } from 'formik';
+ 
 import { Link, NavLink } from 'react-router-dom';
 import { func } from 'prop-types';
 
@@ -19,12 +21,65 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function NewUser({ users, dispatch }){
+
+    const { getFieldProps, handleSubmit, errors, touched } = useFormik({
+        initialValues: {
+            id: 0,
+            active: true,
+            name: "",
+            birth_date: "",
+            state: "",
+            city: "",
+            phone: "",
+            addresses: {
+                name: "",
+                state: "",
+                country: "",
+                neighborhood: "",
+                city: "",
+                street_number: "",
+                complement: "",
+                postal_code: "",
+                street_name: ""
+            },
+            documents: [
+                {
+                    expires_at: "",
+                    country: "",
+                    number: "",
+                    doc_type: "",
+                    category: ""
+                },
+            ]
+        },
+        validate: values => {
+            const err = {
+                name: "",
+                contact: {
+                    email: ""
+                }
+            };
+            const message = "Campo obrigatório";
+            if (!values.name) err.name = message;
+            if (!values.contact.email) err.contact.email = message;
+
+            return err;
+        },
+        onSubmit: (values, bag) => {
+            console.log(values);
+        }
+    });
+    
+    const [name, metadataName] = getFieldProps("name", "text");
+    const [email, metadataEmail] = getFieldProps("contact.email", "text");
+    const [phone, metadataPhone] = getFieldProps("contact.phone", "text");
+
     const classes = useStyles();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert("Enviado!");
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     alert("Enviado!");
+    // }
     
     return (
         <>
@@ -33,20 +88,15 @@ function NewUser({ users, dispatch }){
                 <Typography gutterBottom variant="h4" component="h4">
                     Cadastrar novo usuário
                 </Typography>
-                <form onSubmit={handleSubmit} className={classes.margin}>
-                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
-                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
-                    <TextField id="outlined-basic" fullWidth label="Nome" variant="outlined" />
+                <form className={classes.margin}>
+                    <TextField fullWidth label="Nome" variant="outlined" />
+                    <TextField fullWidth label="Nome" variant="outlined" />
+                    <TextField fullWidth label="Nome" variant="outlined" />
                     <TextField
-                        id="filled-full-width"
-                        label="Label"
-                        placeholder="Placeholder"
+                        label="none"
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        variant="filled"
+                        variant="outlined"
                         />
                 </form>
                 <NavLink to="/">

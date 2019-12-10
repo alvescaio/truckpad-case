@@ -158,7 +158,7 @@ function Home({ users, dispatch }){
                     ))
                 }
                 <Grid item xs={12}>
-                    <NavLink to="/NewUser">
+                    <NavLink to="/register">
                         <Button variant="contained" color="primary">
                             Cadastrar Motorista
                         </Button>
