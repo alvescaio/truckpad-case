@@ -6,9 +6,6 @@ export default () => Yup.object().shape({
         .required('Obrigatório'),
     birth_date: Yup.string()
         .required('Obrigatório'),
-    email: Yup.string()
-        .email('Invalid email')
-        .required('Obrigatório'),
     state: Yup.string()
         .required('Obrigatório'),
     city: Yup.string()
