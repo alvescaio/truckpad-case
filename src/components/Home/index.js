@@ -106,7 +106,7 @@ function Home({ users, dispatch }){
                 </Grid>
                 {
                     users.map((user, i) => (
-                        <Grid item xs={12} md={4} sm={6}>
+                        <Grid item xs={12} md={4} sm={6} key={user.id}>
                              <Card className={classes.card, !user.active ? classes.disabled : ''}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
