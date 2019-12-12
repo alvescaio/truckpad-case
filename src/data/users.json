@@ -6,7 +6,7 @@
       "birth_date": "1976-09-22T00:00:00",
       "state": "São Paulo",
       "city": "São Paulo",
-      "phone": "1120754610",
+      "phone": "11997546101",
       "addresses": {
         "name": "Casa",
         "state": "São Paulo",
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "id": "1",
+      "id": 1,
       "active": true,
       "name": "Quase nada",
       "birth_date": "1986-09-22T00:00:00",
