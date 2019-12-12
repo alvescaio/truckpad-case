@@ -26,9 +26,6 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
         flexGrow: 1,
     },
-    alignSpacebetween: {
-        justifyContent: 'flex-end',
-    },
     hide: {
         display: 'none',
     },
@@ -51,7 +48,12 @@ const useStyles = makeStyles(theme => ({
         height: 80
     },
     disabled: {
-        background: '#E0E0E0',
+        opacity: 0.4,
+    },
+    cardAction: {
+        justifyContent: 'flex-end',
+        'background-color': '#DEDEDE',
+
     }
 }));
 
@@ -115,7 +117,7 @@ function Home({ users, dispatch }){
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>phone</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            { user.phone }
+                                            { "(".concat(user.phone.substring(0,2)).concat(") ").concat(user.phone.slice(2, -1)) }
                                         </Typography>
                                     </div>
                                     <div className={classes.iconAndtext}>
@@ -140,13 +142,16 @@ function Home({ users, dispatch }){
                                         </Typography>
                                     </div>
                                 </CardContent>
-                                <Avatar alt="Remy Sharp" src={require('../../assets/profile_pictures/user-1.jpg')} className={classes.bigAvatar} />
+                                <Avatar 
+                                    alt="Remy Sharp"
+                                    src={ require('../../assets/profile_pictures/user-bino.png')}
+                                    className={classes.bigAvatar} />
                                 <Divider />
-                                <CardActions disableSpacing className={classes.alignSpacebetween} >
-                                    <IconButton aria-label="show more" color="primary" onClick={() => dispatch(addUser({...user, id: users.length+1}))}>
+                                <CardActions disableSpacing className={classes.cardAction} >
+                                    <IconButton aria-label="show more" style={{color: '#007EF3'}} onClick={() => dispatch(addUser({...user, id: users.length+1}))}>
                                         <Icon>edit</Icon>
                                     </IconButton>
-                                    <IconButton aria-label="show more" color="secondary" onClick={() => handleClickOpen(user)}>
+                                    <IconButton aria-label="show more" style={{color: '#ED392F'}} onClick={() => handleClickOpen(user)}>
                                         <Icon>delete</Icon>
                                     </IconButton>
                                     <IconButton onClick={() => dispatch(changeActive(user))} aria-label="show more">
@@ -158,7 +163,7 @@ function Home({ users, dispatch }){
                     ))
                 }
                 <Grid item xs={12}>
-                    <NavLink to="/register">
+                    <NavLink to="/formRegister">
                         <Button variant="contained" color="primary">
                             Cadastrar Motorista
                         </Button>

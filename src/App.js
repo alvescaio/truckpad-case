@@ -7,16 +7,32 @@ import Container from '@material-ui/core/Container';
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { yellow } from '@material-ui/core/colors';
+
 import Home from './components/Home';
 import NewUser from './components/NewUser';
 import Register from './components/Register';
 import FormRegister from './components/FormRegister';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#FFD100' },
+    secondary: { main: '#2C2C2C' },
+    background: {
+      paper: "#EEEEEE",
+      default: "#CACACA"
+    }
+  },
+});
 
 class App extends React.Component {
 
   render (){
     return (
       <>
+        <ThemeProvider theme={theme}>
         <CssBaseline />
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Container>
@@ -28,6 +44,7 @@ class App extends React.Component {
             </BrowserRouter>
           </Container>
         </MuiPickersUtilsProvider>
+        </ThemeProvider>
       </>
     );
   }
