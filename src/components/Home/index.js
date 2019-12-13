@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Creators as TruckersActions} from "../../store/ducks/truckers";
+import { NavLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
@@ -51,7 +51,7 @@ function Home({ truckers, dispatch }){
                 </Grid>
                 {
                     truckers.map((trucker, i) => (
-                        <Grid item xs={12} md={4} sm={6} key={trucker.id}>
+                        <Grid item xs={12} md={4} sm={6} key={trucker.id} className={classes.gridCard}>
                              <Card className={classes.card, !trucker.active ? classes.disabled : ''}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">

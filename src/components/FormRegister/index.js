@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Creators as TruckersActions} from "../../store/ducks/truckers";
+
+import { NavLink, useHistory } from 'react-router-dom';
 import { Formik, Form, Field } from "formik";
-import DatePickerField from "./DatePickerField";
-import { TextField, Icon, Grid, Paper, makeStyles, InputLabel, Button, InputAdornment, FormControl, Select, MenuItem} from '@material-ui/core';
+import { TextField, Icon, Grid, Paper, makeStyles, InputLabel, Button, InputAdornment, FormControl, Select} from '@material-ui/core';
 
 import { DatePicker } from 'material-ui-formik-components/DatePicker';
-import { Select as SelectInputField } from 'material-ui-formik-components/Select';
 
 import INITIAL_VALUES from "../Register/formInitialValues";
 import VALIDATIONS_RULES from "../Register/formValidations";
@@ -14,7 +15,8 @@ import STYLE_FORM_REGISTER from "./style";
 const useStyles = makeStyles(STYLE_FORM_REGISTER);
 INITIAL_VALUES.birth_date = null;
 
-const FormRegister = () => {
+function FormRegister({truckers, dispatch }) {
+  const history = useHistory();
   const classes = useStyles();
   const [state, setState] = React.useState({
     cnhCategory: 'AB',
@@ -34,7 +36,10 @@ const FormRegister = () => {
   };
 
   function submitForm(values){
-    values.documents = [
+    values = {
+      ...values,
+      id: truckers.filter(trucker => trucker.id).reverse()[0].id + 1,
+      documents: [
       {
         "country": "BR",
         "number": values.cpf,
@@ -45,9 +50,10 @@ const FormRegister = () => {
         "number": values.cnhNumber,
         "doc_type": "CNH",
         "category": state.cnhCategory
-      }
-    ]
-    console.log(values)
+      }]
+    }
+    dispatch(TruckersActions.addTrucker(values));
+    history.push("/");
   }
 
   return (
@@ -249,4 +255,4 @@ const FormRegister = () => {
   );
 };
 
-export default FormRegister;
+export default connect(state => ({ truckers: state.truckers.truckers }))(FormRegister);

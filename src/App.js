@@ -9,10 +9,8 @@ import DateFnsUtils from "@date-io/date-fns";
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { yellow } from '@material-ui/core/colors';
 
 import Home from './components/Home';
-import NewUser from './components/NewUser';
 import Register from './components/Register';
 import FormRegister from './components/FormRegister';
 

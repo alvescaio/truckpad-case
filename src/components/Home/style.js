@@ -33,5 +33,12 @@ export default theme => ({
         justifyContent: 'flex-end',
         'background-color': '#DEDEDE',
 
+    },
+    gridCard: {
+        '&:nth-':{
+            '&last-child(1)':{
+                background: "red"
+            }
+        }
     }
 })
