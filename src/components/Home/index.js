@@ -127,7 +127,7 @@ function Home({ truckers, dispatch }){
                     ))
                 }
                 <Grid item xs={12} className={classes.buttonRegister}>
-                    <NavLink to="/formRegister">
+                    <NavLink to="/addTrucker">
                         <Button variant="contained" color="primary">
                             Cadastrar Motorista
                         </Button>

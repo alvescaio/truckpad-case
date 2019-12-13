@@ -11,8 +11,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 import Home from './components/Home';
-import Register from './components/Register';
-import FormRegister from './components/FormRegister';
+import AddTrucker from './components/AddTrucker';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,8 +35,7 @@ class App extends React.Component {
           <Container>
             <BrowserRouter>
               <Route path="/" exact={true} component={Home} />
-              <Route path="/register" component={Register} />
-              <Route path="/formRegister" component={FormRegister} />
+              <Route path="/addTrucker" component={AddTrucker} />
               <Route path="*" />
             </BrowserRouter>
           </Container>

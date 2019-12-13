@@ -1,26 +1,43 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { Creators as TruckersActions} from "../../store/ducks/truckers";
 
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field } from "formik";
 import { TextField, Icon, Grid, Paper, makeStyles, InputLabel, Button, InputAdornment, FormControl, Select} from '@material-ui/core';
 
 import { DatePicker } from 'material-ui-formik-components/DatePicker';
 
-import INITIAL_VALUES from "../Register/formInitialValues";
-import VALIDATIONS_RULES from "../Register/formValidations";
+import INITIAL_VALUES from "./formInitialValues";
+import VALIDATIONS_RULES from "./formValidations";
 import STYLE_FORM_REGISTER from "./style";
 
 const useStyles = makeStyles(STYLE_FORM_REGISTER);
 INITIAL_VALUES.birth_date = null;
 
-function FormRegister({truckers, dispatch }) {
-  const history = useHistory();
+function FormRegister({ onSubmit, initialValues = INITIAL_VALUES }) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     cnhCategory: 'AB',
   });
+
+  function submitForm(values){
+    values = {
+      ...values,
+      //id: truckers.filter(trucker => trucker.id).reverse()[0].id + 1,
+      documents: [
+      {
+        "country": "BR",
+        "number": values.cpf,
+        "doc_type": "CPF"
+      },
+      {
+        "country": "BR",
+        "number": values.cnhNumber,
+        "doc_type": "CNH",
+        "category": state.cnhCategory
+      }]
+    };
+    onSubmit(values);
+  }
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
@@ -34,31 +51,9 @@ function FormRegister({truckers, dispatch }) {
       [name]: event.target.value,
     });
   };
-
-  function submitForm(values){
-    values = {
-      ...values,
-      id: truckers.filter(trucker => trucker.id).reverse()[0].id + 1,
-      documents: [
-      {
-        "country": "BR",
-        "number": values.cpf,
-        "doc_type": "CPF"
-      },
-      {
-        "country": "BR",
-        "number": values.cnhNumber,
-        "doc_type": "CNH",
-        "category": state.cnhCategory
-      }]
-    }
-    dispatch(TruckersActions.addTrucker(values));
-    history.push("/");
-  }
-
   return (
     <Formik
-      onSubmit={(values) => submitForm(values)}
+      onSubmit={submitForm}
       initialValues={INITIAL_VALUES}
       validationSchema={VALIDATIONS_RULES}
     >
@@ -255,4 +250,4 @@ function FormRegister({truckers, dispatch }) {
   );
 };
 
-export default connect(state => ({ truckers: state.truckers.truckers }))(FormRegister);
+export default FormRegister;
