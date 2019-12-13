@@ -2,22 +2,11 @@
     {
       "id": 0,
       "active": true,
-      "name": "Pouca Tripa",
+      "name": "Bino Fernandes Silva",
       "birth_date": "1976-09-22T00:00:00",
       "state": "São Paulo",
       "city": "São Paulo",
-      "phone": "1120754610",
-      "addresses": {
-        "name": "Casa",
-        "state": "São Paulo",
-        "country": "BR",
-        "neighborhood": "CENTRO",
-        "city": "São Paulo",
-        "street_number": 24,
-        "complement": "apartamento",
-        "postal_code": "01300-000",
-        "street_name": "Avenida Paulista"
-      },
+      "phone": "11997546101",
       "documents": [
         {
           "expires_at": "2010-11-23T00:00:00+00:00",
@@ -34,29 +23,25 @@
       ]
     },
     {
-      "id": "1",
+      "id": 1,
       "active": true,
-      "name": "Quase nada",
+      "name": "Thiago André",
       "birth_date": "1986-09-22T00:00:00",
       "state": "Rio de Janeiro",
       "city": "Niterói",
       "phone": "1120754610",
-      "addresses": {
-        "name": "",
-        "state": "",
-        "country": "",
-        "neighborhood": "",
-        "city": "",
-        "street_number": "",
-        "complement": "",
-        "postal_code": "",
-        "street_name": ""
-      },
       "documents": [
         {
           "country": "BR",
           "number": "12312312377",
           "doc_type": "CPF"
+        },
+        {
+          "expires_at": "2010-11-23T00:00:00+00:00",
+          "country": "BR",
+          "number": "700441702",
+          "doc_type": "CNH",
+          "category": "AB"
         }
       ]
     }

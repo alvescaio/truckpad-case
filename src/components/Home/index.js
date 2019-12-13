@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Creators as TruckersActions} from "../../store/ducks/truckers";
+import { NavLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
@@ -7,94 +10,36 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
-import {IconButton} from '@material-ui/core';
+import {IconButton, ThemeProvider} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions} from '@material-ui/core';
+import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, FormControlLabel, Checkbox} from '@material-ui/core';
 
-import { NavLink } from 'react-router-dom';
+import styleHome from './style';
 
-import { connect } from 'react-redux';
-import { tsConstructorType } from '@babel/types';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-        flexGrow: 1,
-    },
-    alignSpacebetween: {
-        justifyContent: 'flex-end',
-    },
-    hide: {
-        display: 'none',
-    },
-    iconAndtext: {
-        marginTop: 5,
-        display: 'flex',
-        alignContent: 'center',
-    },
-    iconDescription: {
-        fontSize: 20,
-        color: 'gray',
-        marginRight: 5
-    },
-    bigAvatar: {
-        position: 'static',
-        width: 'auto',
-        marginBottom: -40,
-        marginLeft: 20, 
-        width: 80,
-        height: 80
-    },
-    disabled: {
-        background: '#E0E0E0',
-    }
-}));
-
-function addUser(user) {
-    return {
-        type: 'ADD_USER',
-        user
-    };
-}
-
-function deleteUser(id) {
-    return {
-        type: 'DELETE_USER',
-        id
-    };
-}
-
-function changeActive(user) {
-    return {
-        type: 'CHANGE_ACTIVE',
-        user,
-    };
-}
-
+const useStyles = makeStyles(styleHome);
 
 function formatBrDate(date){
     let originDate = new Date(date);
     return originDate.getDay('00')+"/"+originDate.getMonth('00')+"/"+originDate.getFullYear('0000');
 }
 
-function Home({ users, dispatch }){
+function Home({ truckers, dispatch }){
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);
-    const [tempUser, setTempUser] = useState({documents: []});
+    const [tempTrucker, setTempTrucker] = useState({});
+    const [checkedDelete, setCheckedDelete] = useState(false);
 
     const handleClickOpen = (data = {}) => {
-        setTempUser(data);
+        setTempTrucker(data);
         setOpen(true);
     };
   
-    const handleClose = (idUser) => {
-        dispatch(deleteUser(idUser));
+    const handleClose = (idTrucker) => {
+        dispatch(TruckersActions.removeTrucker(idTrucker));
         setOpen(false);
     };
 
@@ -105,60 +50,84 @@ function Home({ users, dispatch }){
 
                 </Grid>
                 {
-                    users.map((user, i) => (
-                        <Grid item xs={12} md={4} sm={6}>
-                             <Card className={classes.card, !user.active ? classes.disabled : ''}>
+                    truckers.map((trucker, i) => (
+                        <Grid item xs={12} md={4} sm={6} key={trucker.id} className={classes.gridCard}>
+                             <Card className={classes.card, !trucker.active ? classes.disabled : ''}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
-                                        {user.name}
+                                        {trucker.name}
                                     </Typography>
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>phone</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            { user.phone }
+                                            {trucker.phone.length > 10 ?
+                                                trucker.phone.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, "($1) $2 $4-$3")
+                                                : trucker.phone.replace(/(\d{2})?(\d{4})?(\d{4})/, "($1) $2-$3")}
                                         </Typography>
                                     </div>
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>room</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            {user.city} / {user.state}
+                                            {trucker.city} / {trucker.state}
                                         </Typography>
                                     </div>
                                     <div className={classes.iconAndtext}>
                                         <Icon className={classes.iconDescription}>cake</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            { formatBrDate(user.birth_date) }
+                                            { formatBrDate(trucker.birth_date) }
                                         </Typography>
                                     </div>
                                     <div className={classes.iconAndtext}>
-                                        <Icon className={classes.iconDescription}>info</Icon>
+                                        <Icon className={classes.iconDescription}>assignment_ind</Icon>
                                         <Typography variant="body1" color="textSecondary" component="p" style={{marginRight: 5}}>
                                             CPF:
                                         </Typography>
                                         <Typography variant="body1" color="textSecondary" component="p">
-                                            {user.documents.map(document => document.doc_type === "CPF" ? document.number : "Não cadastrado")[0] }
+                                            {trucker.documents.filter(d => d.doc_type === "CPF")[0].number.replace(/(\d{3})?(\d{3})?(\d{3})?(\d{2})/, "$1.$2.$3-$4") }
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.iconAndtext}>
+                                        <Icon className={classes.iconDescription}>commute</Icon>
+                                        <Typography variant="body1" color="textSecondary" component="p" style={{marginRight: 5}}>
+                                            CNH:
+                                        </Typography>
+                                        <Typography variant="body1" color="textSecondary" component="p">
+                                            { trucker.documents.filter(d => d.doc_type === "CNH")[0].number }
+                                        </Typography>
+                                        <Typography variant="body1" color="textSecondary" component="p" style={{marginLeft: 5}}>
+                                            { trucker.documents.filter(d => d.doc_type === "CNH")[0].category }
                                         </Typography>
                                     </div>
                                 </CardContent>
-                                <Avatar alt="Remy Sharp" src={require('../../assets/profile_pictures/user-1.jpg')} className={classes.bigAvatar} />
+                                <Avatar 
+                                    alt="Remy Sharp"
+                                    src={ require('../../assets/profile_pictures/trucker-bino.png')}
+                                    className={classes.bigAvatar} />
                                 <Divider />
-                                <CardActions disableSpacing className={classes.alignSpacebetween} >
-                                    <IconButton aria-label="show more" color="primary" onClick={() => dispatch(addUser({...user, id: users.length+1}))}>
+                                <CardActions disableSpacing className={classes.cardAction} >
+                                    <IconButton aria-label="EditTrucker" style={{color: '#007EF3'}} onClick={() => dispatch(TruckersActions.addTrucker({...trucker, id: truckers.length+1}))}>
                                         <Icon>edit</Icon>
                                     </IconButton>
-                                    <IconButton aria-label="show more" color="secondary" onClick={() => handleClickOpen(user)}>
+                                    <IconButton 
+                                        aria-label="DeleteTrucker" 
+                                        style={{color: '#ED392F'}} 
+                                        onClick={() => 
+                                                !checkedDelete ? 
+                                                handleClickOpen(trucker) :
+                                                dispatch(TruckersActions.removeTrucker(trucker.idTrucker))
+                                    }>
                                         <Icon>delete</Icon>
                                     </IconButton>
-                                    <IconButton onClick={() => dispatch(changeActive(user))} aria-label="show more">
-                                        <Icon>{!user.active ? "visibility" : "visibility_off"}</Icon>
+                                    <IconButton onClick={() => dispatch(TruckersActions.changeActive(trucker))} aria-label="DisableTrucker">
+                                        <Icon>{!trucker.active ? "visibility" : "visibility_off"}</Icon>
                                     </IconButton>
                                 </CardActions>
                             </Card>
                         </Grid>
                     ))
                 }
-                <Grid item xs={12}>
-                    <NavLink to="/register">
+                <Grid item xs={12} className={classes.buttonRegister}>
+                    <NavLink to="/formRegister">
                         <Button variant="contained" color="primary">
                             Cadastrar Motorista
                         </Button>
@@ -173,11 +142,24 @@ function Home({ users, dispatch }){
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir?</DialogTitle>
+                <DialogContent style={{paddingTop: 0, paddingBottom: 10}}>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={checkedDelete}
+                                onChange={() => setCheckedDelete(!checkedDelete)}
+                                value="checkedDelete"
+                                color="secondary"
+                            />
+                        }
+                        label="Não perguntar novamente"
+                    />
+                </DialogContent>
                 <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleClose} color="default">
                     Não
                 </Button>
-                <Button onClick={() => handleClose(tempUser.id)} color="secondary" autoFocus>
+                <Button onClick={() => handleClose(tempTrucker.id)} color="secondary" variant="outlined" autoFocus>
                     Sim, eu tenho
                 </Button>
                 </DialogActions>
@@ -186,4 +168,4 @@ function Home({ users, dispatch }){
     );
 }
 
-export default connect(state => ({ users: state.users })) (Home); 
+export default connect(state => ({ truckers: state.truckers.truckers })) (Home); 

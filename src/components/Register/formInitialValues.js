@@ -1,5 +1,4 @@
-export default () =>  
-    ({
+export default {
         id: 0,
         active: true,
         name: "",
@@ -27,4 +26,4 @@ export default () =>
                 category: ""
             },
         ]
-    })
+    };
