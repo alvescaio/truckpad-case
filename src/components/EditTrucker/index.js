@@ -5,25 +5,25 @@ import { Creators as TruckersActions} from "../../store/ducks/truckers";
 
 import FormDefault from "../FormDefault";
 
-function AddTrucker({ truckers, dispatch }) {
+function EditTrucker({ truckers, dispatch, match }) {
     const History = useHistory();
+    const DataTrucker = truckers.filter(trucker => trucker.id == match.params.id)[0];
+    
+    if(typeof DataTrucker == "undefined") History.push('/');
 
     function submitForm(values){
-        values = {
-            ...values,
-            id: truckers.filter(trucker => trucker.id).reverse()[0].id + 1,
-        }
         delete values.cpf;
         delete values.cnhNumber;
-        dispatch(TruckersActions.addTrucker(values));
+        dispatch(TruckersActions.editTrucker(values));
         History.push("/");
     }
 
     return (
         <FormDefault
+            InitialValues={truckers.filter(trucker => trucker.id == match.params.id)[0]}
             onSubmit={(value) => {(submitForm(value))} }
         />
     );
 }
 
-export default connect( state => ({ truckers: state.truckers.truckers }) )( AddTrucker );
+export default connect( state => ({ truckers: state.truckers.truckers }) )( EditTrucker );

@@ -6,24 +6,18 @@ export default {
         state: "",
         city: "",
         phone: "",
-        addresses: {
-            name: "",
-            state: "",
-            country: "",
-            neighborhood: "",
-            city: "",
-            street_number: "",
-            complement: "",
-            postal_code: "",
-            street_name: ""
-        },
         documents: [
             {
                 expires_at: "",
                 country: "",
                 number: "",
-                doc_type: "",
-                category: ""
+                doc_type: "CNH",
+                category: "A"
+            },
+            {
+                country: "",
+                number: "",
+                doc_type: "CPF",
             },
         ]
     };

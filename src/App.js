@@ -12,6 +12,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import Home from './components/Home';
 import AddTrucker from './components/AddTrucker';
+import EditTrucker from './components/EditTrucker';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,6 +37,7 @@ class App extends React.Component {
             <BrowserRouter>
               <Route path="/" exact={true} component={Home} />
               <Route path="/addTrucker" component={AddTrucker} />
+              <Route path="/editTrucker/:id" component={EditTrucker} />
               <Route path="*" />
             </BrowserRouter>
           </Container>

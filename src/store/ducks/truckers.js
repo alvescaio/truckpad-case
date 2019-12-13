@@ -53,6 +53,7 @@ export default function truckers(state = INITIAL_STATE, action) {
                     trucker
                 )
             };
+            console.log(newState);
             localStorage.setItem('state', JSON.stringify(newState));
             return newState;
         
@@ -78,7 +79,7 @@ export const Creators = {
     }),
 
     editTrucker: ( trucker ) => ({
-        type: Types.CHANGE_ACTIVE,
+        type: Types.EDIT,
         trucker,
     })
 

@@ -8,34 +8,39 @@ import { DatePicker } from 'material-ui-formik-components/DatePicker';
 
 import INITIAL_VALUES from "./formInitialValues";
 import VALIDATIONS_RULES from "./formValidations";
-import STYLE_FORM_REGISTER from "./style";
+import STYLE_FORM from "./style";
 
-const useStyles = makeStyles(STYLE_FORM_REGISTER);
+const useStyles = makeStyles(STYLE_FORM);
 INITIAL_VALUES.birth_date = null;
 
-function FormRegister({ onSubmit, initialValues = INITIAL_VALUES }) {
+function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
+
+  InitialValues.cpf = parseInt(InitialValues.documents.filter(doc => doc.doc_type == "CPF")[0].number);
+  InitialValues.cnhNumber = parseInt(InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].number);
+
   const classes = useStyles();
   const [state, setState] = React.useState({
-    cnhCategory: 'AB',
+    cnhCategory: InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].category,
   });
 
   function submitForm(values){
     values = {
       ...values,
-      //id: truckers.filter(trucker => trucker.id).reverse()[0].id + 1,
       documents: [
       {
         "country": "BR",
-        "number": values.cpf,
+        "number": values.cpf.toString(),
         "doc_type": "CPF"
       },
       {
         "country": "BR",
-        "number": values.cnhNumber,
+        "number": values.cnhNumber.toString(),
         "doc_type": "CNH",
         "category": state.cnhCategory
       }]
     };
+    delete values.cnhNumber
+    delete values.cpf
     onSubmit(values);
   }
 
@@ -54,7 +59,7 @@ function FormRegister({ onSubmit, initialValues = INITIAL_VALUES }) {
   return (
     <Formik
       onSubmit={submitForm}
-      initialValues={INITIAL_VALUES}
+      initialValues={InitialValues}
       validationSchema={VALIDATIONS_RULES}
     >
       {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
@@ -250,4 +255,4 @@ function FormRegister({ onSubmit, initialValues = INITIAL_VALUES }) {
   );
 };
 
-export default FormRegister;
+export default FormDefault;

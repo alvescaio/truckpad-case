@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Creators as TruckersActions} from "../../store/ducks/truckers";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
@@ -27,6 +27,8 @@ function formatBrDate(date){
 }
 
 function Home({ truckers, dispatch }){
+
+    const History = useHistory();
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);
@@ -105,7 +107,7 @@ function Home({ truckers, dispatch }){
                                     className={classes.bigAvatar} />
                                 <Divider />
                                 <CardActions disableSpacing className={classes.cardAction} >
-                                    <IconButton aria-label="EditTrucker" style={{color: '#007EF3'}} onClick={() => dispatch(TruckersActions.addTrucker({...trucker, id: truckers.length+1}))}>
+                                    <IconButton aria-label="EditTrucker" style={{color: '#007EF3'}} onClick={() => History.push('/editTrucker/'+trucker.id)}>
                                         <Icon>edit</Icon>
                                     </IconButton>
                                     <IconButton 
