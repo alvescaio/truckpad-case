@@ -1,4 +1,4 @@
-import truckersData from "../../data/users.json";
+import truckersData from "../../data/truckers.json";
 
 export const Types = {
     ADD: "truckers/ADD",
@@ -12,10 +12,10 @@ const INITIAL_STATE = stateStorage ? JSON.parse(stateStorage) : { truckers: truc
 export default function truckers(state = INITIAL_STATE, action) {
     let newState = {};
     switch(action.type){
+        
         case Types.ADD:
             let id = parseInt(state.truckers.slice(-1)[0].id) + 1;
             action.trucker.id = id;
-            console.log(state.truckers)
             newState = {
                 ...state,
                 truckers: [
@@ -23,6 +23,7 @@ export default function truckers(state = INITIAL_STATE, action) {
                     action.trucker
                 ]
             };
+            console.log(newState)
             localStorage.setItem('state', JSON.stringify(newState));
             return newState;
 

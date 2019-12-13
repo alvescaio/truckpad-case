@@ -15,7 +15,8 @@ const DatePickerField = ({ field, form, ...other }) => {
         name={field.name}
         value={field.value}
         format="dd/MM/yyyy"
-        InputAdornmentProps={{ position: "start" }}
+        placeholder="10/13/1995"
+        InputAdornmentProps={{ position: "end", style: {paddingLeft: 0} }}
         helperText={currentError}
         error={Boolean(currentError)}
         onError={error => {
