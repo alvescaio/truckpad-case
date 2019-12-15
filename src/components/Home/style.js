@@ -14,7 +14,6 @@ export default theme => ({
     },
     bigAvatar: {
         position: 'static',
-        width: 'auto',
         marginBottom: -40,
         marginLeft: 20, 
         width: 80,

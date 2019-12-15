@@ -9,7 +9,9 @@ function EditTrucker({ truckers, dispatch, match }) {
     const History = useHistory();
     const DataTrucker = truckers.filter(trucker => trucker.id == match.params.id)[0];
     
-    if(typeof DataTrucker == "undefined") History.push('/');
+    if(typeof DataTrucker == "undefined" || !DataTrucker) History.push('/');
+
+    console.log(match.params.id)
 
     function submitForm(values){
         delete values.cpf;

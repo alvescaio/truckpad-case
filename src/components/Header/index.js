@@ -36,7 +36,7 @@ function Header(){
     return (
         <AppBar position="static">
             <Container className={classes.toolbar}>
-                <img src={logoTruckPad}  className={classes.logo}/>
+                <img src={logoTruckPad}  className={classes.logo} onClick={() => {(History.push("/"))}}/>
                 <Button 
                     variant="outlined" 
                     size="large" 

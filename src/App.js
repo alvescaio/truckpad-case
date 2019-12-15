@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -29,23 +29,22 @@ const theme = createMuiTheme({
 });
 
 class App extends React.Component {
-
   render (){
     return (
       <>
         <ThemeProvider theme={theme}>
           <CssBaseline />
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <BrowserRouter>
+            <HashRouter basename="/">
                   <Header />
-                  <Container style={{flex: 1, paddingBottom: 30}}>
+                  <Container style={{flex: 1, paddingBottom: 30, display: 'flex', flexDirection: 'column'}}>
                       <Route path="/" exact={true} component={Home} />
                       <Route path="/addTrucker" component={AddTrucker} />
                       <Route path="/editTrucker/:id" component={EditTrucker} />
                       <Route path="*" />
                   </Container>
                   <Footer />
-              </BrowserRouter>
+              </HashRouter>
             </MuiPickersUtilsProvider>
         </ThemeProvider>
       </>

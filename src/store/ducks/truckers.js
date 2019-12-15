@@ -24,7 +24,6 @@ export default function truckers(state = INITIAL_STATE, action) {
                     action.trucker
                 ]
             };
-            console.log(newState)
             localStorage.setItem('state', JSON.stringify(newState));
             return newState;
 
@@ -53,7 +52,6 @@ export default function truckers(state = INITIAL_STATE, action) {
                     trucker
                 )
             };
-            console.log(newState);
             localStorage.setItem('state', JSON.stringify(newState));
             return newState;
         

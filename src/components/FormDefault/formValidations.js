@@ -15,13 +15,13 @@ export default () => Yup.object().shape({
         .test('len', "Digite um telefone válido!", (val = 0) => val.toString().length < 14 && val.toString().length > 6)
         .required("Obrigatório"),
     cpf: Yup.string()
-        .test('len', 'Digite um CPF válido', (val = 0) => val.toString().length > 1)
-        .test('len', 'Digite um CPF válido', (val = 0) => val.toString().length === 11)
+        .test('len', 'Digite um CPF válido!', (val = 0) => val.toString().length > 1)
+        .test('len', 'Digite um CPF válido!', (val = 0) => val.toString().length === 11)
         .matches(/^[0-9]*$/, "Digite somente números!")
         .required("Obrigatório"),
     cnhNumber: Yup.string()
-        .test('len', 'Digite um CPF válido', (val = 0) => val.toString().length > 1)
-        .test('len', 'Digite um CPF válido', (val = 0) => val.toString().length === 11)
+        .test('len', 'Digite uma CNH válida!', (val = 0) => val.toString().length > 1)
+        .test('len', 'Digite um CNH válida!', (val = 0) => val.toString().length === 11)
         .matches(/^[0-9]*$/, "Digite somente números!")
         .required("Obrigatório"),
 });

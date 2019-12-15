@@ -1,9 +1,10 @@
 import React from "react";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Formik, Form, Field } from "formik";
-import { TextField, Typography, Icon, Grid, Paper, makeStyles, 
-  InputLabel, Button, InputAdornment, FormControl, Select} from '@material-ui/core';
+import { TextField, Typography, Grid, Paper, makeStyles, 
+  InputLabel, InputAdornment, FormControl, Select, Icon} from '@material-ui/core';
+import  Button from '@material-ui/core/Button';
 
 import { DatePicker } from 'material-ui-formik-components/DatePicker';
 
@@ -20,6 +21,11 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
   InitialValues.cnhNumber = InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].number;
 
   const classes = useStyles();
+  const Location = useLocation();
+
+  let actionPageText = "Atualizar";
+  if(Location.pathname == "/addTrucker")
+    actionPageText = "Cadastrar";
 
   const [state, setState] = React.useState({
     cnhCategory: InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].category,
@@ -61,7 +67,7 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
   return (
     <>
       <Typography variant="h5" color="textSecondary" className={classes.title}>
-          Cadastre um novo Motorista
+          {actionPageText} Motorista
       </Typography>
       <Formik
         onSubmit={submitForm}
@@ -225,11 +231,15 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
                       id: 'outlined-cnhCategory-native-simple',
                     }}
                   >
-                    <option value="AB">AB</option>
+                    <option value="A+B">A + B</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>
+                    <option value="A+C">A + C</option>
                     <option value="D">D</option>
+                    <option value="A+D">A + D</option>
+                    <option value="E">E</option>
+                    <option value="A+E">A + E</option>
                   </Select>
                 </FormControl>
                 <Grid item xs={12} className={classes.groupButtons}>
@@ -250,7 +260,7 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
                     type="submit" 
                     title="Submit"
                     startIcon={<Icon>save_icon</Icon>} >
-                      Cadastrar
+                      {actionPageText}
                   </Button>
                 </Grid>
               </Grid>

@@ -38,9 +38,8 @@ function Home({ truckers, dispatch }){
     };
 
     return (
-        <div>
+        <div style={{flex: 1, display: !truckers.length ? 'inherit' : 'flex'}}>
             <Grid container spacing={3} className={classes.content}>
-                {console.log(truckers)}
                 {  
                     !truckers.length ? 
                         <MsgClearBox /> :
