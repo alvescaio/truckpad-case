@@ -35,7 +35,6 @@ Outra biblioteca, a [react router](https://www.npmjs.com/package/react-router) f
 [Formik](https://www.npmjs.com/package/formik) e [Yup](https://www.npmjs.com/package/yup) foram essenciais para validação do fomulário.
 
 Por fim, e não menos importante, a [Redux](https://www.npmjs.com/package/redux), que serviu para gerenciar o estado da aplicação.
- 
 
 ## Autor
 
