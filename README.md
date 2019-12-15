@@ -26,7 +26,7 @@ Usando yarn:
 # yarn start
 ```
 ## Ferramentas de desenvolvimento
-O projeto foi criado em React com a ferramenta 'create-react-app', além disso, foram utilizadas algumas bibliotecas JS que facilitaram o desenvolvimento em diversas partes da projeto.
+O projeto foi criado em React, com a ferramenta 'create-react-app'. Tambémm foram utilizadas algumas bibliotecas JS que facilitaram o desenvolvimento em diversas partes da projeto.
 
 Para suporte na criação do design da aplicação, foi utilitazada a biblioteca [material-ui](https://material-ui.com/), que fornece diversos componentes com a cara do [material design](https://material.io/design/).
 
