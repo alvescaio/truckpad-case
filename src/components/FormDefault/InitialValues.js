@@ -3,7 +3,7 @@ export default {
         active: true,
         name: "",
         birth_date: "",
-        state: "",
+        state: "AC",
         city: "",
         phone: "",
         documents: [

@@ -11,8 +11,6 @@ function EditTrucker({ truckers, dispatch, match }) {
     
     if(typeof DataTrucker == "undefined" || !DataTrucker) History.push('/');
 
-    console.log(match.params.id)
-
     function submitForm(values){
         delete values.cpf;
         delete values.cnhNumber;

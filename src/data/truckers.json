@@ -4,7 +4,7 @@
       "active": true,
       "name": "Bino Fernandes Silva",
       "birth_date": "1976-09-22T00:00:00",
-      "state": "São Paulo",
+      "state": "SP",
       "city": "São Paulo",
       "phone": "11997546101",
       "documents": [
@@ -27,122 +27,7 @@
       "active": true,
       "name": "Thiago André",
       "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
-      "city": "Niterói",
-      "phone": "1120754610",
-      "documents": [
-        {
-          "country": "BR",
-          "number": "12312312377",
-          "doc_type": "CPF"
-        },
-        {
-          "expires_at": "2010-11-23T00:00:00+00:00",
-          "country": "BR",
-          "number": "70044170200",
-          "doc_type": "CNH",
-          "category": "AB"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "active": true,
-      "name": "Thiago André",
-      "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
-      "city": "Niterói",
-      "phone": "1120754610",
-      "documents": [
-        {
-          "country": "BR",
-          "number": "12312312377",
-          "doc_type": "CPF"
-        },
-        {
-          "expires_at": "2010-11-23T00:00:00+00:00",
-          "country": "BR",
-          "number": "70044170200",
-          "doc_type": "CNH",
-          "category": "AB"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "active": true,
-      "name": "Thiago André",
-      "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
-      "city": "Niterói",
-      "phone": "1120754610",
-      "documents": [
-        {
-          "country": "BR",
-          "number": "12312312377",
-          "doc_type": "CPF"
-        },
-        {
-          "expires_at": "2010-11-23T00:00:00+00:00",
-          "country": "BR",
-          "number": "70044170200",
-          "doc_type": "CNH",
-          "category": "AB"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "active": true,
-      "name": "Thiago André",
-      "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
-      "city": "Niterói",
-      "phone": "1120754610",
-      "documents": [
-        {
-          "country": "BR",
-          "number": "12312312377",
-          "doc_type": "CPF"
-        },
-        {
-          "expires_at": "2010-11-23T00:00:00+00:00",
-          "country": "BR",
-          "number": "70044170200",
-          "doc_type": "CNH",
-          "category": "AB"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "active": true,
-      "name": "Thiago André",
-      "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
-      "city": "Niterói",
-      "phone": "1120754610",
-      "documents": [
-        {
-          "country": "BR",
-          "number": "12312312377",
-          "doc_type": "CPF"
-        },
-        {
-          "expires_at": "2010-11-23T00:00:00+00:00",
-          "country": "BR",
-          "number": "70044170200",
-          "doc_type": "CNH",
-          "category": "AB"
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "active": true,
-      "name": "Thiago André",
-      "birth_date": "1986-09-22T00:00:00",
-      "state": "Rio de Janeiro",
+      "state": "RJ",
       "city": "Niterói",
       "phone": "1120754610",
       "documents": [
