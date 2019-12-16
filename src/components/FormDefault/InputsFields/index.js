@@ -4,6 +4,8 @@ import { DatePicker } from 'material-ui-formik-components/DatePicker';
 import { TextField, makeStyles, 
     InputLabel, InputAdornment, FormControl, Select, Icon} from '@material-ui/core';
 
+import moment from 'moment';
+
 import STYLE_FORM from '../style';
 import BR_STATES from './statesBR';
 
@@ -57,7 +59,7 @@ function InputsFields({handleChange, handleBlur, handleSubmit, values, touched, 
                 label="Data de Nascimento"
                 helperText={touched.birth_date ? errors.birth_date : ""}
                 margin="dense"
-                maxDate={new Date(new Date().getTime() - 24*60*60*1000*6574)}
+                maxDate={moment(new Date().getTime() - 24*60*60*1000*6574)}
                 InputProps={{
                 endAdornment: 
                     <InputAdornment position="end">
@@ -108,26 +110,6 @@ function InputsFields({handleChange, handleBlur, handleSubmit, values, touched, 
                 }
                 </Select>
             </FormControl>
-            {/* <TextField
-                id="state"
-                label="Estado"
-                value={values.state}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                helperText={touched.state ? errors.state : ""}
-                error={touched.state && Boolean(errors.state)}
-                margin="dense"
-                variant="outlined"
-                color="secondary"
-                fullWidth
-                InputProps={{
-                    endAdornment: 
-                    <InputAdornment position="end">
-                        <Icon className={classes.iconDefault}>map</Icon>
-                    </InputAdornment>,
-                }}
-                required
-            /> */}
             <TextField
                 id="phone"
                 label="Telefone"

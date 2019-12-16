@@ -15,8 +15,6 @@ export default function truckers(state = INITIAL_STATE, action) {
     switch(action.type){
         
         case Types.ADD:
-            let id = parseInt(state.truckers.slice(-1)[0].id) + 1;
-            action.trucker.id = id;
             newState = {
                 ...state,
                 truckers: [

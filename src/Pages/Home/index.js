@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Creators as TruckersActions} from "../../store/ducks/truckers";
 import { useHistory } from 'react-router-dom';
 
+import moment from 'moment';
+
 import {Typography, IconButton, CardContent, CardActions,
     Card, Dialog, DialogTitle, DialogContent, 
     DialogActions, FormControlLabel, Checkbox, Grid, Divider,
@@ -12,11 +14,6 @@ import MsgClearBox from './msgClearBox';
 import styleHome from './style';
 
 const useStyles = makeStyles(styleHome);
-
-function formatBrDate(date){
-    let originDate = new Date(date);
-    return ("0" + (originDate.getDay() + 1)).slice(-2)+"/"+("0" + (originDate.getMonth() + 1)).slice(-2)+"/"+originDate.getFullYear();
-}
 
 function Home({ truckers, dispatch }){
 
@@ -54,7 +51,7 @@ function Home({ truckers, dispatch }){
                                             <Icon className={classes.iconDescription}>phone</Icon>
                                             <Typography variant="body1" color="textSecondary" component="p">
                                                 {trucker.phone.length > 10 ?
-                                                    trucker.phone.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, "($1) $2 $4-$3")
+                                                    trucker.phone.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, "($1) $2 $3-$4")
                                                     : trucker.phone.replace(/(\d{2})?(\d{4})?(\d{4})/, "($1) $2-$3")}
                                             </Typography>
                                         </div>
@@ -67,7 +64,7 @@ function Home({ truckers, dispatch }){
                                         <div className={classes.iconAndtext}>
                                             <Icon className={classes.iconDescription}>cake</Icon>
                                             <Typography variant="body1" color="textSecondary" component="p">
-                                                { formatBrDate(trucker.birth_date) }
+                                                { moment(trucker.birth_date).format("DD/MM/YYYY") }
                                             </Typography>
                                         </div>
                                         <div className={classes.iconAndtext}>

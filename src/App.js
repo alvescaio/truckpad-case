@@ -37,7 +37,7 @@ class App extends React.Component {
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <HashRouter basename="/">
                   <Header />
-                  <Container style={{flex: 1, paddingBottom: 30, display: 'flex', flexDirection: 'column'}}>
+                  <Container style={{flex: 1, paddingBottom: 30, flexDirection: 'column'}}>
                       <Route path="/" exact={true} component={Home} />
                       <Route path="/addTrucker" component={AddTrucker} />
                       <Route path="/editTrucker/:id" component={EditTrucker} />

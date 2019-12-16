@@ -1,8 +1,10 @@
+import moment from 'moment';
+
 export default {
         id: 0,
         active: true,
         name: "",
-        birth_date: "",
+        birth_date: moment(new Date().getTime() - 24*60*60*1000*6574),
         state: "AC",
         city: "",
         phone: "",

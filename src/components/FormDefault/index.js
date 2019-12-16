@@ -6,26 +6,27 @@ import { Typography, Grid, Paper, makeStyles, Icon} from '@material-ui/core';
 import  Button from '@material-ui/core/Button';
 import InputsFields from './InputsFields';
 
+import moment from 'moment';
+
 import INITIAL_VALUES from "./InitialValues";
-import VALIDATIONS_RULES from "./formValidations";
+import validate_schema from "./formValidations";
 import STYLE_FORM from "./style";
 
 const useStyles = makeStyles(STYLE_FORM);
-INITIAL_VALUES.birth_date = new Date(new Date().getTime() - 24*60*60*1000*6574);
 
-function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
+function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES}) {
 
   InitialValues.cpf = InitialValues.documents.filter(doc => doc.doc_type == "CPF")[0].number;
   InitialValues.cnhNumber = InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].number;
   InitialValues.cnhCategory = InitialValues.documents.filter(doc => doc.doc_type == "CNH")[0].category;
+  InitialValues.birth_date = moment(InitialValues.birth_date);
 
   const classes = useStyles();
   const Location = useLocation();
   const History = useHistory();
 
   let actionPageText = "Atualizar";
-  if(Location.pathname == "/addTrucker")
-    actionPageText = "Cadastrar";
+  if(Location.pathname == "/addTrucker") actionPageText = "Cadastrar";
 
   function submitForm(values){
     values = {
@@ -56,7 +57,7 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES }) {
       <Formik
         onSubmit={submitForm}
         initialValues={InitialValues}
-        validationSchema={VALIDATIONS_RULES}
+        validationSchema={validate_schema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
           <Paper className={classes.paper}>
