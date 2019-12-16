@@ -11,6 +11,7 @@ Segue algumas orientações de como executar o projeto.
 Você precisa ter o [nodejs](https://nodejs.org/) instalado, além disso, é necessário possuir o npm ou yarn para prosseguir com a build do projeto.
 
 ### Executando o projeto
+Na pasta raíz, execute os seguintes comandos:
 
 Usando npm:
 
@@ -25,7 +26,8 @@ Usando yarn:
 # yarn install
 # yarn start
 ```
-## Ferramentas de desenvolvimento
+
+## Ferramentas utilizadas no desenvolvimento
 O projeto foi criado em React, com a ferramenta 'create-react-app'. Também foram utilizadas algumas bibliotecas JS que facilitaram o desenvolvimento em diversas partes da projeto.
 
 Para suporte na criação do design da aplicação, foi utilitazada a biblioteca [material-ui](https://material-ui.com/), que fornece diversos componentes com a cara do [material design](https://material.io/design/).
@@ -35,6 +37,21 @@ Outra biblioteca, a [react router](https://www.npmjs.com/package/react-router) f
 [Formik](https://www.npmjs.com/package/formik) e [Yup](https://www.npmjs.com/package/yup) foram essenciais para validação do fomulário.
 
 Por fim, e não menos importante, a [Redux](https://www.npmjs.com/package/redux), que serviu para gerenciar o estado da aplicação.
+
+## Executar testes
+Foi escrito alguns testes unitários para funções responsáveis pelo gerenciamento do estado global da aplicação (Actions, Reducers...). Para executar os testes, execute o seguinte comando:
+
+Usando npm:
+
+```
+# npm test
+```
+
+Usando yarn:
+
+```
+# yarn test
+```
 
 ## Autor
 
