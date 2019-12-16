@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "04ab27714f4befcd117c10645d7f9641",
+    "revision": "a2ec183c5c01dd8ceca86ace0eb0bc63",
     "url": "/truckpad-case/index.html"
   },
   {
-    "revision": "6c2431c3c90c4edee334",
+    "revision": "59fb3a6ff9f9dd9976a7",
     "url": "/truckpad-case/static/css/main.6ae0c75a.chunk.css"
   },
   {
-    "revision": "f7aeeaeec76d71aed3b1",
-    "url": "/truckpad-case/static/js/2.89d7617e.chunk.js"
+    "revision": "4837aec014330d598536",
+    "url": "/truckpad-case/static/js/2.f75606c7.chunk.js"
   },
   {
     "revision": "c8d937b44801a61947e20cab2e635a1c",
-    "url": "/truckpad-case/static/js/2.89d7617e.chunk.js.LICENSE"
+    "url": "/truckpad-case/static/js/2.f75606c7.chunk.js.LICENSE"
   },
   {
-    "revision": "6c2431c3c90c4edee334",
-    "url": "/truckpad-case/static/js/main.c6fe672e.chunk.js"
+    "revision": "59fb3a6ff9f9dd9976a7",
+    "url": "/truckpad-case/static/js/main.56967b5c.chunk.js"
   },
   {
     "revision": "126127fddfe628c6a24a",
@@ -32,7 +32,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/truckpad-case/static/media/trucker.50f2bca3.png"
   },
   {
-    "revision": "2b8369266035fa0eb6b3f02218c59503",
-    "url": "/truckpad-case/static/media/truckpad-logo.2b836926.svg"
+    "revision": "4a7cc5e3f8d03f29fcb5f5ac9b294139",
+    "url": "/truckpad-case/static/media/truckpad-logo.4a7cc5e3.svg"
   }
 ]);
