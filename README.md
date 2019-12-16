@@ -11,7 +11,7 @@ Segue algumas orientações de como executar o projeto.
 Você precisa ter o [nodejs](https://nodejs.org/) instalado, além disso, é necessário possuir o npm ou yarn para prosseguir com a build do projeto.
 
 ### Executando o projeto
-Na pasta raíz, execute os seguintes comandos:
+Na pasta raiz, execute os seguintes comandos:
 
 Usando npm:
 
