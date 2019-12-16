@@ -44,5 +44,51 @@
           "category": "AB"
         }
       ]
+    },
+    {
+      "id": 2,
+      "active": true,
+      "name": "Thiago André",
+      "birth_date": "1986-09-22T00:00:00",
+      "state": "RJ",
+      "city": "Niterói",
+      "phone": "1120754610",
+      "documents": [
+        {
+          "country": "BR",
+          "number": "12312312377",
+          "doc_type": "CPF"
+        },
+        {
+          "expires_at": "2010-11-23T00:00:00+00:00",
+          "country": "BR",
+          "number": "70044170200",
+          "doc_type": "CNH",
+          "category": "AB"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "active": true,
+      "name": "Thiago André",
+      "birth_date": "1986-09-22T00:00:00",
+      "state": "RJ",
+      "city": "Niterói",
+      "phone": "1120754610",
+      "documents": [
+        {
+          "country": "BR",
+          "number": "12312312377",
+          "doc_type": "CPF"
+        },
+        {
+          "expires_at": "2010-11-23T00:00:00+00:00",
+          "country": "BR",
+          "number": "70044170200",
+          "doc_type": "CNH",
+          "category": "AB"
+        }
+      ]
     }
   ]

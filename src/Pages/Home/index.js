@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Creators as TruckersActions} from "../../store/ducks/truckers";
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {Typography, IconButton, CardContent, CardActions,
     Card, Dialog, DialogTitle, DialogContent, 

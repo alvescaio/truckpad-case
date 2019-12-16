@@ -4,6 +4,7 @@ import { format as formatCPF, validate as validateCPF} from 'gerador-validador-c
 export default () => Yup.object().shape({
     name: Yup.string()
         .max(30, "Muito Grande, abrevie!")
+        .matches(new RegExp(/^[a-zA-Zà-ú .']*$/, 'i'), "Digite apenas letras!")
         .required("Obrigatório"),
     birth_date: Yup.date().required('Obrigatório'),
     state: Yup.string()
@@ -12,6 +13,7 @@ export default () => Yup.object().shape({
         .required("Obrigatório"),
     city: Yup.string()
         .max(30, "Muito Grande, abrevie!")
+        .matches(new RegExp(/^[a-zA-Zà-ú .']*$/, 'i'), "Digite apenas letras!")
         .required("Obrigatório"),
     phone: Yup.string()
         .matches(/^[0-9]*$/, "Digite somente números!")

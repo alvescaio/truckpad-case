@@ -13,9 +13,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import Home from './components/Home';
-import AddTrucker from './components/AddTrucker';
-import EditTrucker from './components/EditTrucker';
+import Home from './Pages/Home';
+import AddTrucker from './Pages/AddTrucker';
+import EditTrucker from './Pages/EditTrucker';
 
 const theme = createMuiTheme({
   palette: {

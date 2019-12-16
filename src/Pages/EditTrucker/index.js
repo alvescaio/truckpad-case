@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Creators as TruckersActions} from "../../store/ducks/truckers";
 
-import FormDefault from "../FormDefault";
+import FormDefault from "../../components/FormDefault";
 
 function EditTrucker({ truckers, dispatch, match }) {
     const History = useHistory();
