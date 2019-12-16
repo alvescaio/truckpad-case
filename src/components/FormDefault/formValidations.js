@@ -7,17 +7,14 @@ export default () => Yup.object().shape({
         .matches(new RegExp(/^[a-zA-Zà-ú .']*$/, 'i'), "Digite apenas letras!")
         .required("Obrigatório"),
     birth_date: Yup.date().required('Obrigatório'),
-    state: Yup.string()
-        .test('len', "Digite a sigla do estado. Exemplo: RN!", (val = 0) => val.toString().length == 2)
-        .matches(new RegExp(/^[A-Z]*$/, 'i'), "Digite apenas letras!")
-        .required("Obrigatório"),
     city: Yup.string()
         .max(30, "Muito Grande, abrevie!")
         .matches(new RegExp(/^[a-zA-Zà-ú .']*$/, 'i'), "Digite apenas letras!")
         .required("Obrigatório"),
     phone: Yup.string()
-        .matches(/^[0-9]*$/, "Digite somente números!")
-        .test('len', "Digite um telefone válido!", (val = 0) => val.toString().length < 14 && val.toString().length > 6)
+        .matches(/^[0-9]*$/, "Digite somente números, incluindo o DDD!")
+        .min(10, "Número inválido: muito pequeno!")
+        .max(11, "Número inválido: muito grande!")
         .required("Obrigatório"),
     cpf: Yup.string()
         .matches(/^[0-9]*$/, "Digite somente números!")

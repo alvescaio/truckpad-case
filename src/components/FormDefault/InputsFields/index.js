@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from "formik";
 import { DatePicker } from 'material-ui-formik-components/DatePicker';
 import { TextField, makeStyles, 
-    InputLabel, InputAdornment, FormControl, Select, Icon} from '@material-ui/core';
+    InputLabel, InputAdornment, FormControl, Select, Icon, FormControlLabel, Switch} from '@material-ui/core';
 
 import moment from 'moment';
 
@@ -195,6 +195,12 @@ function InputsFields({handleChange, handleBlur, handleSubmit, values, touched, 
                 <option value="A+E">A + E</option>
                 </Select>
             </FormControl>
+            <FormControlLabel
+                value={values.active}
+                control={<Switch name='active' color="secondary" checked={values.active} onChange={handleChange} />}
+                label={values.active ? "Ativado" : "Desativado"}
+                labelPlacement="end"
+            />
         </>
     );
 }

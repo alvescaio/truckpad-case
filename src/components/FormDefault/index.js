@@ -65,7 +65,6 @@ function FormDefault({ onSubmit, InitialValues = INITIAL_VALUES}) {
               <InputsFields
                 handleChange={handleChange}
                 handleBlur={handleBlur}
-                handleSubmit={handleSubmit}
                 values={values}
                 touched={touched}
                 errors={errors}
