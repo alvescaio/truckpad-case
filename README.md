@@ -38,7 +38,7 @@ Outra biblioteca, a [react router](https://www.npmjs.com/package/react-router) f
 
 Por fim, e não menos importante, a [Redux](https://www.npmjs.com/package/redux), que serviu para gerenciar o estado da aplicação.
 
-## Executar testes
+## Testes
 Foi escrito alguns testes unitários para funções responsáveis pelo gerenciamento do estado global da aplicação (Actions, Reducers...). Para executar os testes, execute o seguinte comando:
 
 Usando npm:
