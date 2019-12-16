@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/truckpad-case/precache-manifest.8edb0f47596872368d702cee9a861aba.js"
+  "/truckpad-case/precache-manifest.9969940be98241e2d6f4c955b68de462.js"
 );
 
 self.addEventListener('message', (event) => {
