@@ -2,6 +2,8 @@
 
 Este case trata-se de um sistema para simular o cadastro e visualização de motoristas da plataforma truckpad. O usuário é capaz de cadastrar caminhoneiros, visualizar uma listagem dos caminhoneiros cadastrados e, caso queira, editar as informações cadastradas.
 
+Para verificar como ficou a aplicação rodando em produção, acesse [alvescaio.github.io/truckpad-case](https://alvescaio.github.io/truckpad-case)
+
 ## Começando
 
 Segue algumas orientações de como executar o projeto.
