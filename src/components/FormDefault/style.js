@@ -22,13 +22,11 @@ export default (theme) => ({
         [theme.breakpoints.down('xs')]: {
             'flex-direction': 'column',
         },
-        '& > a': {
+        '& > button': {
             [theme.breakpoints.down('xs')]: {
                 marginBottom: theme.spacing(2),
+                width: '100%',
             },
-            '& > button': {
-                width: '100%'
-            }
         },       
     },
     paper: {

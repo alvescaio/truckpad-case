@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://alvescaio.github.io/truckpad-case",
   "dependencies": {
+    "@babel/runtime": "^7.7.6",
     "@date-io/date-fns": "1.3.6",
     "@material-ui/core": "4.8.0",
     "@material-ui/icons": "^4.5.1",
@@ -48,10 +49,10 @@
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",
-    "@babel/preset-env": "<current-version>",
-    "@babel/preset-react": "<current-version>",
-    "babel-jest": "<current-version>",
-    "jest": "<current-version>",
+    "@babel/preset-env": "7.7.6",
+    "@babel/preset-react": "7.7.4",
+    "babel-jest": "24.9.0",
+    "jest": "24.9.0",
     "react-test-renderer": "^16.12.0"
   }
 }
