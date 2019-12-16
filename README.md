@@ -45,32 +45,6 @@ ou
 <!-- AUTO-GENERATED-CONTENT:START (DIRTREE:dir=./) -->
 ```
 truckpad-case/
-├─┬ build/
-│ ├─┬ static/
-│ │ ├─┬ css/
-│ │ │ ├── main.6ae0c75a.chunk.css
-│ │ │ └── main.6ae0c75a.chunk.css.map
-│ │ ├─┬ js/
-│ │ │ ├── 2.f75606c7.chunk.js
-│ │ │ ├── 2.f75606c7.chunk.js.LICENSE
-│ │ │ ├── 2.f75606c7.chunk.js.map
-│ │ │ ├── main.56967b5c.chunk.js
-│ │ │ ├── main.56967b5c.chunk.js.map
-│ │ │ ├── runtime-main.2e952ead.js
-│ │ │ └── runtime-main.2e952ead.js.map
-│ │ └─┬ media/
-│ │   ├── clear.bd326b2f.gif
-│ │   ├── trucker.50f2bca3.png
-│ │   └── truckpad-logo.4a7cc5e3.svg
-│ ├── asset-manifest.json
-│ ├── favicon.ico
-│ ├── index.html
-│ ├── logo192.png
-│ ├── logo512.png
-│ ├── manifest.json
-│ ├── precache-manifest.c1354d43cda4909cbe39b02461f2fd54.js
-│ ├── robots.txt
-│ └── service-worker.js
 ├─┬ public/
 │ ├── favicon.ico
 │ ├── index.html
@@ -125,13 +99,9 @@ truckpad-case/
 │ └── index.js
 ├── .babelrc
 ├── babel.config.js
-├── debug.log
-├── doc-directory-create.js
-├── doc-directory-tree.js
 ├── package-lock.json
 ├── package.json
 ├── README.md
-├── yarn-error.log
 └── yarn.lock
 ```
 <!-- AUTO-GENERATED-CONTENT:END -->
