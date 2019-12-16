@@ -10,22 +10,42 @@ Segue algumas orientações de como executar o projeto.
 
 Você precisa ter o [nodejs](https://nodejs.org/) instalado, além disso, é necessário possuir o npm ou yarn para prosseguir com a build do projeto.
 
-### Executando o projeto
-Na pasta raiz do projeto, execute os seguintes comandos:
+### Obtendo uma cópia do projeto
 
-Usando npm:
+É possível obter uma cópia deste projeto baixando e descompactando o arquivo .zip disponível neste [link](https://github.com/alvescaio/truckpad-case/archive/master.zip). Depois, abra o terminal e navegue até a pasta raiz do projeto.
+
+Também é possível obter uma cópia dos arquivos com o comando a seguir, caso tenha o git instalado:
+
+```
+# git clone https://github.com/alvescaio/truckpad-case.git
+```
+
+### Executando o projeto
+
+Primeiramente, precisamos instalar todas as dependências necessárias para funcionamento do código. Para isso, na pasta raiz do projeto, execute o comando:
 
 ```
 # npm install
-# npm start
 ```
-
-Usando yarn:
-
+ou
 ```
 # yarn install
-# yarn start
 ```
+Estando todas as dependências instaladas, basta rodar o projeto com o comando:
+
+```
+# npm install
+```
+ou
+```
+# yarn install
+```
+## Estrutura de diretórios da aplicação
+
+<!-- AUTO-GENERATED-CONTENT:START (DIRTREE:dir=./) -->
+
+<!-- AUTO-GENERATED-CONTENT:END -->
+
 
 ## Ferramentas utilizadas no desenvolvimento
 O projeto foi criado em React, com a ferramenta 'create-react-app'. Também foram utilizadas algumas bibliotecas JS que facilitaram o desenvolvimento em diversas partes da projeto.
@@ -54,7 +74,6 @@ Usando yarn:
 ```
 # yarn test
 ```
-
 ## Autor
 
 * [**Caio Alves**](https://github.com/alvescaio)
