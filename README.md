@@ -36,11 +36,11 @@ ou
 Estando todas as dependências instaladas, basta rodar o projeto com o comando:
 
 ```
-# npm install
+# npm start
 ```
 ou
 ```
-# yarn install
+# yarn start
 ```
 ## Estrutura de diretórios da aplicação
 
